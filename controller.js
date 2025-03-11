@@ -16,11 +16,11 @@ const homepage = (req, res) => {
 
 const searchUser = async (req, res) => {
     res.send(await Student.find({ stdnum: req.query.stdnum }));
-}
+} // shows json object
 
 const searchMembers = async (req, res) => {
     res.send(await Student.find({}));
-}
+} // shows all data in database
 
 const saveStudent = async (req, res) => {
     try {
@@ -31,7 +31,7 @@ const saveStudent = async (req, res) => {
             age: req.body.age
         }); // create new Student obj
 
-        await newStudent.save(); // add to databas
+        await newStudent.save(); // add to database
 
         res.send({ inserted: true }); // send true
 
@@ -43,8 +43,8 @@ const saveStudent = async (req, res) => {
 
 const updateStudent = async (req, res) => {
     await Student.updateOne(
-        { fname: "Mary Jane" },
-        { $set: { lname: "Parker" } }
+        { fname: "Mary Jane" }, // find first name
+        { $set: { lname: "Parker" } } // update last name
     );
     res.send(await Student.find({ fname: "Mary Jane"}));
 }
@@ -53,7 +53,7 @@ const removeUser = async (req, res) => {
     const check = await Student.deleteOne({ stdnum: req.body.stdnum });
 
     if (check.acknowledged && check.deletedCount > 0) {
-        res.send({ deleted: true });
+        res.send({ deleted: true }); //return true if user was deleted successfully
     } else {
         res.send({ deleted: false });
     }
@@ -61,8 +61,9 @@ const removeUser = async (req, res) => {
 
 const removeAllUser = async (req, res) => {
     const check = await Student.deleteMany({});
+    
     if (check.acknowledged && check.deletedCount > 0) {
-        res.send({ deleted: true });
+        res.send({ deleted: true }); //return true all data were deleted successfully
     } else {
         res.send({ deleted: false });
     }

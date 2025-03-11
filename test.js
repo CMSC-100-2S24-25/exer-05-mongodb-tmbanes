@@ -1,5 +1,6 @@
 import needle from 'needle';
 
+// ADDING 5 STUDENTS
 needle.post(
     'http://localhost:3000/save-student',
     {
@@ -66,28 +67,30 @@ needle.post(
     }
 );
 
+
+// UPDATING LAST NAME
 needle.post(
     'http://localhost:3000/update',
-    {
-        lname: "Parker",
-    }, 
+    { lname: "Parker" }, 
     (err, res) => {
         console.log(res.body);
     }
 );
 
-// needle.post(
-//     'http://localhost:3000/remove-user',
-//     { stdnum: "202312345" }, 
-//     (err, res) => {
-//         console.log(res.body);
-//     }
-// );
+// DELETING STUDENT
+needle.post(
+    'http://localhost:3000/remove-user',
+    { stdnum: "202312345" }, 
+    (err, res) => {
+        console.log(res.body);
+    }
+);
 
-// needle.post(
-//     'http://localhost:3000/remove-all-user',
-//     {}, 
-//     (err, res) => {
-//         console.log(res.body);
-//     }
-// );
+// DELETING ALL DATA
+needle.post(
+    'http://localhost:3000/remove-all-user',
+    {}, 
+    (err, res) => {
+        console.log(res.body);
+    }
+);
