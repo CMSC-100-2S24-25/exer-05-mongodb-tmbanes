@@ -42,10 +42,11 @@ const saveStudent = async (req, res) => {
 }
 
 const updateStudent = async (req, res) => {
-    res.send(await Student.updateOne(
+    await Student.updateOne(
         { fname: "Mary Jane" },
         { $set: { lname: "Parker" } }
-    ))
+    );
+    res.send(await Student.find({ fname: "Mary Jane"}));
 }
 
 const removeUser = async (req, res) => {
