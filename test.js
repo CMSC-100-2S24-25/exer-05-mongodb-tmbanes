@@ -66,25 +66,23 @@ import needle from 'needle';
 //     }
 // );
 
-needle.post(
-    'http://localhost:3000/update',
-    {
-        lname: "Parker",
-    }, 
-    (err, res) => {
-        console.log(res.body);
-    }
-);
-
 // needle.post(
-//     'http://localhost:3000/remove-user',
+//     'http://localhost:3000/update',
 //     {
-//         stdnum: "202312345",
+//         lname: "Parker",
 //     }, 
 //     (err, res) => {
 //         console.log(res.body);
 //     }
 // );
+
+needle.post(
+    'http://localhost:3000/remove-user',
+    { stdnum: "202312345" }, 
+    (err, res) => {
+        console.log(res.body);
+    }
+);
 
 // needle.post(
 //     'http://localhost:3000/remove-all-user',

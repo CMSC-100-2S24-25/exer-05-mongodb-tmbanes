@@ -52,7 +52,7 @@ const updateStudent = async (req, res) => {
 const removeUser = async (req, res) => {
     const check = await Student.deleteOne({ stdnum: req.body.stdnum });
 
-    if (check.acknowledged) {
+    if (check.acknowledged && check.deletedCount > 0) {
         res.send({ deleted: true });
     } else {
         res.send({ deleted: false });
