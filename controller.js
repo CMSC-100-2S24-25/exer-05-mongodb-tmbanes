@@ -60,7 +60,12 @@ const removeUser = async (req, res) => {
 }
 
 const removeAllUser = async (req, res) => {
-    await Student.deleteMany({});
+    const check = await Student.deleteMany({});
+    if (check.acknowledged && check.deletedCount > 0) {
+        res.send({ deleted: true });
+    } else {
+        res.send({ deleted: false });
+    }
 }
 
 
