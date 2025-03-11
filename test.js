@@ -7,7 +7,7 @@ needle.post(
         fname: "Mary Jane",
         lname: "Watson",
         age: 30
-    }, 
+    },
     (err, res) => {
         console.log(res.body);
     }
@@ -20,7 +20,7 @@ needle.post(
         fname: "Sherlock",
         lname: "Holmes",
         age: 33
-    }, 
+    },
     (err, res) => {
         console.log(res.body);
     }
@@ -34,7 +34,7 @@ needle.post(
         fname: "John",
         lname: "Watson",
         age: 34
-    }, 
+    },
     (err, res) => {
         console.log(res.body);
     }
@@ -47,7 +47,7 @@ needle.post(
         fname: "James",
         lname: "Moriarty",
         age: 29
-    }, 
+    },
     (err, res) => {
         console.log(res.body);
     }
@@ -60,7 +60,7 @@ needle.post(
         fname: "Greg",
         lname: "Lestrade",
         age: 31
-    }, 
+    },
     (err, res) => {
         console.log(res.body);
     }

@@ -32,7 +32,7 @@ const saveStudent = async (req, res) => {
         }); // create new Student obj
 
         await newStudent.save(); // add to databas
-        
+
         res.send({ inserted: true }); // send true
 
     } catch (err) {
@@ -49,7 +49,13 @@ const updateStudent = async (req, res) => {
 }
 
 const removeUser = async (req, res) => {
-    res.send(await Student.deleteOne({ stdnum: req.body.stdnum }));
+    const check = await Student.deleteOne({ stdnum: req.body.stdnum });
+
+    if (check.acknowledged) {
+        res.send({ deleted: true });
+    } else {
+        res.send({ deleted: false });
+    }
 }
 
 const removeAllUser = async (req, res) => {
