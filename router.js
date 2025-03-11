@@ -5,9 +5,9 @@ const router = (app) => {
     app.get('/user', searchUser);
     app.get('/members', searchMembers);
     app.post('/save-student', saveStudent);
-    app.post('/update', saveStudent);
-    app.post('/remove-user', saveStudent);
-    app.post('/remove-all-user', saveStudent);
+    app.post('/update', updateStudent);
+    app.post('/remove-user', removeUser);
+    app.post('/remove-all-user', removeAllUser);
 }
 
 export default router;

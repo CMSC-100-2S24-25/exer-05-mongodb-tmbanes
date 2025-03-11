@@ -8,7 +8,7 @@ const Student = mongoose.model('Student', {
     fname: String,
     lname: String,
     age: Number
-});
+}, 'studentData');
 
 const homepage = (req, res) => {
     res.send('Exercise #6');
@@ -23,14 +23,22 @@ const searchMembers = async (req, res) => {
 }
 
 const saveStudent = async (req, res) => {
-    res.send(await Student.save({ fname: req.query.fname }));
+    try {
+        const newStudent = new Student({
+            stdnum: req.body.stdnum,
+            fname: req.body.fname,
+            lname: req.body.lname,
+            age: req.body.age
+        }); // create new Student obj
 
-    const newStudent = new Student({
-        stdnum: "1234213",
-        fname: "Juan",
-        lname: "dela Cruz",
-        age: 20
-    });
+        await newStudent.save(); // add to databas
+        
+        res.send({ inserted: true }); // send true
+
+    } catch (err) {
+        res.send({ inserted: false }); // send false if did not push through
+    }
+
 }
 
 const updateStudent = async (req, res) => {
@@ -41,7 +49,7 @@ const updateStudent = async (req, res) => {
 }
 
 const removeUser = async (req, res) => {
-    res.send(await Student.deleteOne({ stdnum: "8051495845" }));
+    res.send(await Student.deleteOne({ stdnum: req.body.stdnum }));
 }
 
 const removeAllUser = async (req, res) => {
